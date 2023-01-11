@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+
+char Str[100], RevStr[100];
+int i, j, len;
+
+printf("Enter any text here : ");
+gets(Str);
+
+j = 0;
+len = strlen(Str);
+
+for(i = len - 1; i >= 0; i--)
+{
+    RevStr[j++] = Str[i];
+}
+
+RevStr[i] = "\0";
+
+printf("\n Thr Required Reverse String is as follows = %s \n", RevStr);
+return 0;
+
+}
