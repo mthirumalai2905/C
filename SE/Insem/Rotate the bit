@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+void binary(unsigned int n)
+{
+	unsigned int mask = 0x80000000;
+    while(mask) {
+	  printf("%d", (n&mask)?1:0);
+	  mask = mask >> 1;
+	}
+}
+
+unsigned int left_rotate(unsigned int num, int n) {
+  return (num << n) | (num >> (32 - n));
+}
+
+unsigned int right_rotate(unsigned int num, int n) {
+  return (num >> n) | (num << (32 - n));
+}
+
+void main()
+{
+    unsigned int num = 0, result;
+	int n = 0;
+	
+    printf("Enter an integer: ");
+    scanf("%d", &num);
+
+    printf("Binary represntation of the input number:\n");
+    binary(num);
+    
+    printf("\nHow many bits to rotate (0-31)?: ");
+    scanf("%d", &n);
+    
+    result = left_rotate(num, n);
+    printf("\n\nAfter left rotating %d bits:\n", n);
+    binary(result);
+    
+    result = right_rotate(num, n);
+    printf("\n\nAfter right rotating %d bits:\n", n);
+    binary(result);
+    
+    printf("\n");
+}
